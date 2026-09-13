@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7YH8KHDDRF"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-7YH8KHDDRF');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sinergitec | VoiceLink v3.0.0</title>
+    <link rel="icon" type="image/png" href="Assets/favicon.png">
+    <style>
+        :root {
+            --bg: #050505;
+            --surface: #0e0e0e;
+            --primary: #3e8e6b; /* Official Sinergy Olive Green */
+            --primary-glow: rgba(62, 142, 107, 0.25);
+            --text: #eeeeee;
+            --text-dim: #777777;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: "Segoe UI", "Segoe UI Semibold", "Segoe UI Bold", -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.5;
+            overflow-x: hidden;
+            font-size: 1rem;
+            -webkit-font-smoothing: antialiased;
+            transition: opacity 0.4s ease;
+        }
+
+        .glow {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: radial-gradient(circle at 50% 50%, var(--primary-glow) 0%, transparent 60%);
+            opacity: 0.15; pointer-events: none; z-index: -1;
+        }
+
+        header {
+            /* The logo was removed, so space-between left the nav pinned to the
+               LEFT as the only flex child. justify-content:center centres it. */
+            padding: 3rem 2rem 1.5rem; display: flex; justify-content: center;
+            align-items: center; max-width: 1100px; margin: 0 auto;
+        }
+
+        .logo-img { height: 100px; width: auto; }
+
+        nav { display: flex; align-items: center; gap: 3rem; }
+        
+        nav a {
+            color: var(--text-dim); text-decoration: none;
+            font-size: 0.85rem; font-weight: 600; transition: var(--transition);
+            letter-spacing: 1px; text-transform: uppercase;
+        }
+
+        nav a:hover { color: var(--primary); }
+
+        .lang-switcher {
+            display: flex; background: rgba(255, 255, 255, 0.05);
+            padding: 4px; border-radius: 8px; gap: 4px; margin-left: 1rem;
+        }
+
+        .lang-btn {
+            background: transparent; border: none; color: var(--text-dim);
+            padding: 6px 12px; font-size: 0.75rem; font-weight: 800;
+            cursor: pointer; border-radius: 6px; transition: var(--transition);
+        }
+
+        .lang-btn.active { background: var(--primary); color: white; }
+
+        main { max-width: 1100px; margin: 0 auto; padding: 0 2rem; text-align: center; }
+        main > .hero { padding-top: 0; margin-top: 0; }
+        /* the video row escapes the 1100px column so the clip can actually grow */
+        .hero { max-width: none; }
+        .app-screenshot-container { max-width: 1400px; margin-left: auto; margin-right: auto; }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 5rem); font-weight: 600; line-height: 1;
+            margin-bottom: 2rem; letter-spacing: -1px; color: #ffffff; text-transform: uppercase;
+        }
+
+        .hero h1 span.brand { color: var(--primary); text-shadow: 0 0 20px var(--primary-glow); }
+        .hero h1 span.version { color: #ffffff; opacity: 0.9; }
+
+        .hero p {
+            font-size: 1.2rem; color: var(--text-dim); max-width: 500px;
+            margin: 0 auto 4.5rem; font-weight: 400; letter-spacing: 0.2px;
+        }
+
+        .cta-group { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+
+        .btn {
+            padding: 1.2rem 4rem; border-radius: 50px; font-weight: 600; text-decoration: none;
+            transition: var(--transition); font-size: 0.9rem; cursor: pointer;
+            letter-spacing: 1px; text-transform: uppercase;
+        }
+
+        .btn-primary { background-color: var(--primary); color: rgba(255,255,255,0.9); box-shadow: 0 8px 25px rgba(0,0,0,0.5); }
+        .btn-primary:hover { transform: translateY(-3px); background-color: #4aab80; color: #ffffff; }
+
+        .btn-secondary { background-color: transparent; color: var(--text-dim); border: 1px solid rgba(255,255,255,0.06); }
+        .btn-secondary:hover { color: var(--text); background-color: rgba(255,255,255,0.02); border-color: var(--primary); }
+
+        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-top: 10rem; }
+
+        .feature-card {
+            background: var(--surface); padding: 5rem 3.5rem; border-radius: 40px; text-align: left;
+            border: 1px solid rgba(255,255,255,0.02); transition: var(--transition);
+        }
+
+        .feature-card:hover { border-color: var(--primary); transform: translateY(-8px); background: #181818; }
+
+        .feature-card h3 { font-size: 1.8rem; margin-bottom: 1.5rem; color: var(--primary); font-weight: 600; letter-spacing: -0.2px; }
+        .feature-card p { color: var(--text-dim); font-size: 1.1rem; line-height: 1.6; }
+
+
+        /* Compact Showcase & Video Styles */
+        .app-screenshot-container {
+            display: flex;
+            justify-content: center;
+            /* top margin 0: the header already provides the (halved) gap, so this
+               must not re-add the old full 3rem on top of it. */
+            margin: 0 0 2rem;
+            width: 100%;
+        }
+
+        .app-screenshot-compact {
+            width: 140px;
+            height: auto;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            transition: var(--transition);
+            background: rgba(255, 255, 255, 0.02);
+            padding: 4px;
+        }
+
+        .app-screenshot-compact:hover {
+            transform: scale(1.06);
+            border-color: var(--primary);
+            box-shadow: 0 20px 45px rgba(62, 142, 107, 0.25);
+        }
+
+        .app-intro-video {
+            width: 100%;
+            /* +10% over the previous 1040px; parent column widened above */
+            max-width: 1258px;
+            height: auto;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            /* No border / radius / shadow: the clip background matches --bg
+               (#0d0d0d), so any frame would draw a visible box around it. */
+            border: none;
+            border-radius: 0;
+            box-shadow: none;
+            background: transparent;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .video-section {
+            display: flex;
+            justify-content: center;
+            margin-top: 5rem;
+            width: 100%;
+            padding: 0 1rem;
+        }
+
+        .video-container {
+            background: #000000;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 28px;
+            overflow: hidden;
+            width: 100%;
+            max-width: 760px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+            aspect-ratio: 16 / 9;
+        }
+
+        .demo-video {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        footer { padding: 6rem 2rem; text-align: center; border-top: 1px solid rgba(255,255,255,0.02); margin-top: 10rem; }
+
+        .social-links { display: flex; justify-content: center; gap: 4rem; margin-bottom: 3rem; }
+        .social-links a { color: var(--text-dim); text-decoration: none; font-weight: 700; font-size: 0.8rem; letter-spacing: 2px; transition: var(--transition); text-transform: uppercase; }
+        .social-links a:hover { color: var(--primary); }
+        .copyright { font-size: 0.75rem; color: var(--text-dim); opacity: 0.2; letter-spacing: 2px; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            header { flex-direction: column; gap: 2rem; padding: 3rem 2rem; }
+            .logo-img { height: 60px; }
+            nav a { margin: 0.5rem 0; font-size: 0.7rem; }
+            nav { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+            .lang-switcher { margin-left: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="glow"></div>
+
+    <header>
+        <nav>
+            <a href="#features" data-t="nav_features">Features</a>
+            <a href="https://buy.stripe.com/7sYdR25vo8Zxc2l0hifQI04" target="_blank" target="_blank" style="color: var(--primary); font-weight: 700;">BUY PRO</a>
+            <a href="https://github.com/danilofrazao-dev/Sinergitec.VoiceLink" data-t="nav_github">GitHub</a>
+            <a href="https://github.com/danilofrazao-dev/Sinergitec.VoiceLink/blob/main/SUPPORT.md" target="_blank" data-t="nav_support">Support</a>
+            <div class="lang-switcher">
+                <button class="lang-btn active" onclick="setLang('en')">EN</button>
+                <button class="lang-btn" onclick="setLang('pt')">PT</button>
+                <button class="lang-btn" onclick="setLang('es')">ES</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            
+            <!-- 1. Sinergitec brand intro video (Remotion) -->
+            <div class="app-screenshot-container">
+                <video class="app-intro-video" autoplay muted playsinline aria-label="Sinergitec brand intro">
+                    <source src="Assets/sinergitec_intro.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+
+            <!-- 2. Download / CTA Section -->
+            <div class="cta-group">
+                <a href="https://github.com/danilofrazao-dev/Sinergitec.VoiceLink/releases/download/v3.0.0/SinergitecVoiceLink.exe" class="btn btn-primary" data-t="cta_download">DOWNLOAD FOR WINDOWS</a>
+                <a href="https://buy.stripe.com/7sYdR25vo8Zxc2l0hifQI04" target="_blank" target="_blank" class="btn btn-secondary" style="border-color: var(--primary); color: #ffffff;">BUY LICENSE / PRO</a>
+                <a href="https://github.com/danilofrazao-dev/Sinergitec.VoiceLink/blob/main/SUPPORT.md" target="_blank" class="btn btn-secondary" data-t="cta_support">SUPPORT THE PROJECT</a>
+            </div>
+
+            <!-- 3. Local Video Player (centered) -->
+            <div class="video-section">
+                <div class="video-container glass">
+                    <video autoplay loop muted controls playsinline class="demo-video">
+                        <source src="Assets/voicelink_demo.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="features" class="features">
+            <div class="feature-card">
+                <h3 data-t="feat1_title">Universal Injection</h3>
+                <p data-t="feat1_desc">Type into any window—VS Code, Slack, Terminal—using only your voice. Faster than a keyboard, smarter than a transcript.</p>
+            </div>
+            <div class="feature-card">
+                <h3 data-t="feat2_title">Local-First Privacy</h3>
+                <p data-t="feat2_desc">Your data stays on your machine. No cloud storage, no training on your voice. Secure interaction by design.</p>
+            </div>
+            <div class="feature-card">
+                <h3 data-t="feat3_title">Radical Visualization</h3>
+                <p data-t="feat3_desc">High-precision audio feedback with our custom mini-spike waveform. See the pulse of your connection in real-time.</p>
+            </div>
+        </section>
+
+        <section id="support" style="margin-top: 10rem;">
+            <h2 style="font-weight: 600; text-transform: uppercase; margin-bottom: 2rem;" data-t="support_title">Support Sinergitec</h2>
+            <p style="color: var(--text-dim); max-width: 600px; margin: 0 auto 3rem;" data-t="support_desc">Your support helps us keep Sinergitec independent and local-first. Every contribution goes directly towards trademarking and future developments.</p>
+            <a href="https://github.com/danilofrazao-dev/Sinergitec.VoiceLink/blob/main/SUPPORT.md" target="_blank" class="btn btn-primary" data-t="cta_contribute">CONTRIBUTE NOW</a>
+        </section>
+    </main>
+
+    <footer>
+        <div class="social-links">
+            <a href="https://tiktok.com/@sinergitec">TIKTOK</a>
+            <a href="https://instagram.com/sinergitecbr">INSTAGRAM</a>
+            <a href="https://x.com/sinergitecbr">X / TWITTER</a>
+        </div>
+        <p class="copyright">Developed by danilofrazao-dev | &copy; 2026 Sinergitec Systems</p>
+    </footer>
+
+    <script>
+        // wave-line animator removed with the element
+        }
+        animate();
+
+        const translations = {
+            en: {
+                nav_features: "Features",
+                nav_github: "GitHub",
+                nav_support: "Support",
+                cta_download: "DOWNLOAD FOR WINDOWS",
+                cta_support: "SUPPORT THE PROJECT",
+                feat1_title: "Universal Injection",
+                feat1_desc: "Type into any window—VS Code, Slack, Terminal—using only your voice. Faster than a keyboard, smarter than a transcript.",
+                feat2_title: "Local-First Privacy",
+                feat2_desc: "Your data stays on your machine. No cloud storage, no training on your voice. Secure interaction by design.",
+                feat3_title: "Radical Visualization",
+                feat3_desc: "High-precision audio feedback with our custom mini-spike waveform. See the pulse of your connection in real-time.",
+                support_title: "Support Sinergitec",
+                support_desc: "Your support helps us keep Sinergitec independent and local-first. Every contribution goes directly towards trademarking and future developments.",
+                cta_contribute: "CONTRIBUTE NOW",
+                showcase_title: "Universal Interface & Web Integration",
+                showcase_app_label: "Native Windows Universal Audio Hub",
+                showcase_web_label: "Modern Responsive Web Presence (sinergitec.com.br)",
+                showcase_video_label: "Real-time local voice routing engine"
+            },
+            pt: {
+                nav_features: "Recursos",
+                nav_github: "GitHub",
+                nav_support: "Suporte",
+                cta_download: "BAIXAR PARA WINDOWS",
+                cta_support: "APOIE O PROJETO",
+                feat1_title: "Injeção Universal",
+                feat1_desc: "Digite em qualquer janela—VS Code, Slack, Terminal—usando apenas sua voz. Mais rápido que un teclado, mais inteligente que uma transcrição.",
+                feat2_title: "Privacidade Local",
+                feat2_desc: "Seus dados ficam na sua máquina. Sem armazenamento em nuvem, sem treinamento com sua voz. Interação segura por design.",
+                feat3_title: "Visualização Radical",
+                feat3_desc: "Feedback de áudio de alta precisão com nossa forma de onda mini-spike personalizada. Veja o pulso da sua conexão em tempo real.",
+                support_title: "Apoie a Sinergitec",
+                support_desc: "Seu apoio nos ajuda a manter a Sinergitec independente e focada no local-first. Cada contribuição vai diretamente para o registro da marca e desenvolvimentos futuros.",
+                cta_contribute: "CONTRIBUIR AGORA",
+                showcase_title: "Interface Universal & Integração Web",
+                showcase_app_label: "Hub de Áudio Nativo Universal para Windows",
+                showcase_web_label: "Presença Web Moderna e Responsiva (sinergitec.com.br)",
+                showcase_video_label: "Mecanismo de roteamento de voz local em tempo real"
+            },
+            es: {
+                nav_features: "Características",
+                nav_github: "GitHub",
+                nav_support: "Soporte",
+                cta_download: "DESCARGAR PARA WINDOWS",
+                cta_support: "APOYAR EL PROYECTO",
+                feat1_title: "Inyección Universal",
+                feat1_desc: "Escribe en cualquier ventana—VS Code, Slack, Terminal—usando solo tu voz. Más rápido que un teclado, más inteligente que una transcripción.",
+                feat2_title: "Privacidad Local",
+                feat2_desc: "Tus datos permanecen en tu máquina. Sin almacenamiento en la nube, sin entrenamiento con tu voz. Interacción segura por diseño.",
+                feat3_title: "Visualización Radical",
+                feat3_desc: "Retroalimentación de audio de alta precisión con nuestra forma de onda mini-spike personalizada. Mira el pulso de tu conexión en tiempo real.",
+                support_title: "Apoya a Sinergitec",
+                support_desc: "Tu apoyo nos ayuda a mantener Sinergitec independiente y centrada en lo local. Cada contribución va directamente al registro de la marca y desarrollos futuros.",
+                cta_contribute: "CONTRIBUIR AHORA",
+                showcase_title: "Interfaz Universal e Integración Web",
+                showcase_app_label: "Hub de Audio Nativo Universal para Windows",
+                showcase_web_label: "Presencia Web Moderna y Responsiva (sinergitec.com.br)",
+                showcase_video_label: "Motor de enrutamiento de voz local en tiempo real"
+            }
+        };
+
+        function setLang(lang) {
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if(btn.innerText.toLowerCase() === lang) btn.classList.add('active');
+            });
+
+            document.body.style.opacity = 0;
+
+            setTimeout(() => {
+                document.querySelectorAll('[data-t]').forEach(el => {
+                    const key = el.getAttribute('data-t');
+                    el.innerText = translations[lang][key];
+                });
+                document.body.style.opacity = 1;
+            }, 400);
+        }
+
+        // Track download clicks in Google Analytics
+        document.addEventListener('DOMContentLoaded', () => {
+            const downloadBtn = document.querySelector('[data-t="cta_download"]');
+            if (downloadBtn) {
+                downloadBtn.addEventListener('click', () => {
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'download_click', {
+                            'app_name': 'VoiceLink',
+                            'platform': 'Windows',
+                            'version': 'v3.0.0'
+                        });
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
