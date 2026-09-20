@@ -16,12 +16,39 @@
     <link rel="icon" type="image/png" href="Assets/favicon.png">
     <style>
         :root {
+            /* ---- Brand palette, matched to the LIVE WEBSITE -----------------
+               The deployed site ships an olive green (#3E8E6B, hue 155) which
+               reads bluer and fits the dark surfaces better than the logo's
+               purer grass green (#33874C, hue 138). We keep the LIVE green as
+               the base and rebuild the family around that same hue.
+               ---------------------------------------------------------------- */
+
+            /* Surfaces — near-black, with a barely-there green cast so the
+               page reads as one family with the mark. */
             --bg: #050505;
-            --surface: #0e0e0e;
-            --primary: #3e8e6b; /* Official Sinergy Olive Green */
+            --surface: #0b0e0c;
+            --surface-2: #0c110e;
+            --border: rgba(62, 142, 107, 0.12);
+
+            /* Green — the LIVE olive tone, unchanged. Drives every interactive state. */
+            --primary: #3e8e6b;
+            --primary-hover: #4aab80;
+            --primary-bright: #5fb894;
+            --primary-deep: #2a6350;
             --primary-glow: rgba(62, 142, 107, 0.25);
+            --primary-soft: rgba(62, 142, 107, 0.10);
+
+            /* Blue — the secondary logo tone. Structural / informational only,
+               never for body text: raw #195E7C is 2.85:1 on --bg and fails AA.
+               The tinted forms below clear 4.5:1. */
+            --accent: #195e7c;
+            --accent-text: #427b94;
+            --accent-bright: #5e8ea3;
+            --accent-deep: #124257;
+            --accent-soft: rgba(25, 94, 124, 0.12);
+
             --text: #eeeeee;
-            --text-dim: #777777;
+            --text-dim: #6f7972;
             --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -64,7 +91,7 @@
         nav a:hover { color: var(--primary); }
 
         .lang-switcher {
-            display: flex; background: rgba(255, 255, 255, 0.05);
+            display: flex; background: var(--primary-soft);
             padding: 4px; border-radius: 8px; gap: 4px; margin-left: 1rem;
         }
 
@@ -74,7 +101,9 @@
             cursor: pointer; border-radius: 6px; transition: var(--transition);
         }
 
-        .lang-btn.active { background: var(--primary); color: white; }
+        /* Language buttons stay NEUTRAL on purpose: green is reserved for the buy/purchase
+           actions only, so the colour always means "this costs money". */
+        .lang-btn.active { background: rgba(255, 255, 255, 0.10); color: #ffffff; }
 
         main { max-width: 1100px; margin: 0 auto; padding: 0 2rem; text-align: center; }
         main > .hero { padding-top: 0; margin-top: 0; }
@@ -103,22 +132,31 @@
             letter-spacing: 1px; text-transform: uppercase;
         }
 
-        .btn-primary { background-color: var(--primary); color: rgba(255,255,255,0.9); box-shadow: 0 8px 25px rgba(0,0,0,0.5); }
-        .btn-primary:hover { transform: translateY(-3px); background-color: #4aab80; color: #ffffff; }
+        /* The only green button on the page. */
+        .btn-buy { background-color: var(--primary); color: #ffffff; border: 1px solid var(--primary-bright); box-shadow: 0 8px 25px rgba(0,0,0,0.5); }
+        .btn-buy:hover { transform: translateY(-3px); background-color: var(--primary-hover); color: #ffffff; box-shadow: 0 12px 32px var(--primary-glow); }
 
-        .btn-secondary { background-color: transparent; color: var(--text-dim); border: 1px solid rgba(255,255,255,0.06); }
-        .btn-secondary:hover { color: var(--text); background-color: rgba(255,255,255,0.02); border-color: var(--primary); }
+        /* Secondary action carries the BLUE, so the two logo colours each own
+           a distinct role instead of blue sitting unused in the palette.
+           Used by BOTH free actions — DOWNLOAD and SUPPORT THE PROJECT — so they
+           read as a pair and only BUY carries green. */
+        .btn-secondary { background-color: transparent; color: var(--text-dim); border: 1px solid var(--accent-soft); }
+        .btn-secondary:hover { color: var(--text); background-color: var(--accent-soft); border-color: var(--accent-text); }
+
+        /* Non-purchase actions: neutral outline, never green. */
+        .btn-neutral { background-color: transparent; color: var(--text-dim); border: 1px solid rgba(255,255,255,0.12); }
+        .btn-neutral:hover { color: var(--text); background-color: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.22); }
 
         .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-top: 10rem; }
 
         .feature-card {
             background: var(--surface); padding: 5rem 3.5rem; border-radius: 40px; text-align: left;
-            border: 1px solid rgba(255,255,255,0.02); transition: var(--transition);
+            border: 1px solid var(--border); transition: var(--transition);
         }
 
-        .feature-card:hover { border-color: var(--primary); transform: translateY(-8px); background: #181818; }
+        .feature-card:hover { border-color: var(--primary); transform: translateY(-8px); background: var(--surface-2); }
 
-        .feature-card h3 { font-size: 1.8rem; margin-bottom: 1.5rem; color: var(--primary); font-weight: 600; letter-spacing: -0.2px; }
+        .feature-card h3 { font-size: 1.8rem; margin-bottom: 1.5rem; color: var(--primary-bright); font-weight: 600; letter-spacing: -0.2px; }
         .feature-card p { color: var(--text-dim); font-size: 1.1rem; line-height: 1.6; }
 
 
@@ -136,17 +174,17 @@
             width: 140px;
             height: auto;
             border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--border);
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
             transition: var(--transition);
-            background: rgba(255, 255, 255, 0.02);
+            background: var(--primary-soft);
             padding: 4px;
         }
 
         .app-screenshot-compact:hover {
             transform: scale(1.06);
             border-color: var(--primary);
-            box-shadow: 0 20px 45px rgba(62, 142, 107, 0.25);
+            box-shadow: 0 20px 45px var(--primary-glow);
         }
 
         .app-intro-video {
@@ -157,7 +195,7 @@
             aspect-ratio: 16 / 9;
             object-fit: cover;
             /* No border / radius / shadow: the clip background matches --bg
-               (#0d0d0d), so any frame would draw a visible box around it. */
+               (#050505), so any frame would draw a visible box around it. */
             border: none;
             border-radius: 0;
             box-shadow: none;
@@ -176,7 +214,7 @@
 
         .video-container {
             background: #000000;
-            border: 1px solid rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--accent-soft);
             border-radius: 28px;
             overflow: hidden;
             width: 100%;
@@ -192,7 +230,7 @@
             object-fit: cover;
         }
 
-        footer { padding: 6rem 2rem; text-align: center; border-top: 1px solid rgba(255,255,255,0.02); margin-top: 10rem; }
+        footer { padding: 6rem 2rem; text-align: center; border-top: 1px solid var(--border); margin-top: 10rem; }
 
         .social-links { display: flex; justify-content: center; gap: 4rem; margin-bottom: 3rem; }
         .social-links a { color: var(--text-dim); text-decoration: none; font-weight: 700; font-size: 0.8rem; letter-spacing: 2px; transition: var(--transition); text-transform: uppercase; }
@@ -215,7 +253,7 @@
     <header>
         <nav>
             <a href="#features" data-t="nav_features">Features</a>
-            <a href="https://buy.stripe.com/7sYdR25vo8Zxc2l0hifQI04" target="_blank" target="_blank" style="color: var(--primary); font-weight: 700;">BUY PRO</a>
+            <a href="https://buy.stripe.com/7sYdR25vo8Zxc2l0hifQI04" target="_blank" rel="noopener" style="color: var(--primary); font-weight: 700;">BUY PRO</a>
             <a href="https://github.com/danilofrazao-dev/Sinergitec.VoiceLink" data-t="nav_github">GitHub</a>
             <a href="https://github.com/danilofrazao-dev/Sinergitec.VoiceLink/blob/main/SUPPORT.md" target="_blank" data-t="nav_support">Support</a>
             <div class="lang-switcher">
@@ -239,8 +277,8 @@
 
             <!-- 2. Download / CTA Section -->
             <div class="cta-group">
-                <a href="https://github.com/danilofrazao-dev/Sinergitec.VoiceLink/releases/download/v3.0.0/SinergitecVoiceLink.exe" class="btn btn-primary" data-t="cta_download">DOWNLOAD FOR WINDOWS</a>
-                <a href="https://buy.stripe.com/7sYdR25vo8Zxc2l0hifQI04" target="_blank" target="_blank" class="btn btn-secondary" style="border-color: var(--primary); color: #ffffff;">BUY LICENSE / PRO</a>
+                <a href="https://github.com/danilofrazao-dev/Sinergitec.VoiceLink/releases/download/v3.0.0/SinergitecVoiceLink.exe" class="btn btn-secondary" data-t="cta_download">DOWNLOAD FOR WINDOWS</a>
+                <a href="https://buy.stripe.com/7sYdR25vo8Zxc2l0hifQI04" target="_blank" rel="noopener" class="btn btn-buy">BUY LICENSE / PRO</a>
                 <a href="https://github.com/danilofrazao-dev/Sinergitec.VoiceLink/blob/main/SUPPORT.md" target="_blank" class="btn btn-secondary" data-t="cta_support">SUPPORT THE PROJECT</a>
             </div>
 
@@ -274,7 +312,7 @@
         <section id="support" style="margin-top: 10rem;">
             <h2 style="font-weight: 600; text-transform: uppercase; margin-bottom: 2rem;" data-t="support_title">Support Sinergitec</h2>
             <p style="color: var(--text-dim); max-width: 600px; margin: 0 auto 3rem;" data-t="support_desc">Your support helps us keep Sinergitec independent and local-first. Every contribution goes directly towards trademarking and future developments.</p>
-            <a href="https://github.com/danilofrazao-dev/Sinergitec.VoiceLink/blob/main/SUPPORT.md" target="_blank" class="btn btn-primary" data-t="cta_contribute">CONTRIBUTE NOW</a>
+            <a href="https://github.com/danilofrazao-dev/Sinergitec.VoiceLink/blob/main/SUPPORT.md" target="_blank" class="btn btn-neutral" data-t="cta_contribute">CONTRIBUTE NOW</a>
         </section>
     </main>
 
@@ -288,10 +326,6 @@
     </footer>
 
     <script>
-        // wave-line animator removed with the element
-        }
-        animate();
-
         const translations = {
             en: {
                 nav_features: "Features",
