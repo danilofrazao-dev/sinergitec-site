@@ -298,10 +298,10 @@
       "applicationCategory": "UtilitiesApplication",
       "applicationSubCategory": "Voice-to-text / Speech recognition",
       "operatingSystem": "Windows 10, Windows 11",
-      "softwareVersion": "3.0.1",
+      "softwareVersion": "3.0.2",
       "description": "VoiceLink is a local-first Windows voice-to-text application that injects your speech directly into any window — VS Code, Slack, Terminal — using Universal Injection. Your data stays on your machine: no cloud storage, no training on your voice. Features high-precision audio feedback with a custom mini-spike waveform.",
       "url": "https://sinergitec.com.br/",
-      "downloadUrl": "https://github.com/danilofrazao-dev/Sinergitec.VoiceLink/releases/download/v3.0.1/SinergitecVoiceLink.exe",
+      "downloadUrl": "https://github.com/danilofrazao-dev/Sinergitec.VoiceLink/releases/download/v3.0.2/SinergitecVoiceLink.exe",
       "softwareHelp": "https://github.com/danilofrazao-dev/Sinergitec.VoiceLink",
       "publisher": { "@id": "https://sinergitec.com.br/#organization" },
       "author": { "@id": "https://sinergitec.com.br/#organization" },
@@ -335,6 +335,7 @@
     <header>
         <nav>
             <a href="#features" data-t="nav_features">Features</a>
+            <a href="#setup" data-t="nav_setup">Setup</a>
             <a href="https://buy.stripe.com/7sYdR25vo8Zxc2l0hifQI04" target="_blank" target="_blank" style="color: var(--primary); font-weight: 700;">BUY PRO</a>
             <a href="https://github.com/danilofrazao-dev/Sinergitec.VoiceLink" data-t="nav_github">GitHub</a>
             <a href="https://github.com/danilofrazao-dev/Sinergitec.VoiceLink/blob/main/SUPPORT.md" target="_blank" data-t="nav_support">Support</a>
@@ -349,7 +350,7 @@
     <main>
         <section class="hero">
             
-            <h1><span class="brand" data-t="hero_title_brand">VoiceLink</span> <span class="version">v3.0.1</span></h1>
+            <h1><span class="brand" data-t="hero_title_brand">VoiceLink</span> <span class="version">v3.0.2</span></h1>
             <p data-t="hero_subtitle">Voice-to-text for Windows. Type into any window using only your voice.</p>
 
             <!-- 1.  Sinergitec brand intro video (Remotion) -->
@@ -362,7 +363,7 @@
 
             <!-- 2. Download / CTA Section -->
             <div class="cta-group">
-                <a href="https://github.com/danilofrazao-dev/Sinergitec.VoiceLink/releases/download/v3.0.1/SinergitecVoiceLink.exe" class="btn btn-primary" data-t="cta_download">DOWNLOAD FOR WINDOWS</a>
+                <a href="https://github.com/danilofrazao-dev/Sinergitec.VoiceLink/releases/download/v3.0.2/SinergitecVoiceLink.exe" class="btn btn-primary" data-t="cta_download">DOWNLOAD FOR WINDOWS</a>
                 <a href="https://buy.stripe.com/7sYdR25vo8Zxc2l0hifQI04" target="_blank" target="_blank" class="btn btn-secondary" style="border-color: var(--primary); color: #ffffff;">BUY LICENSE / PRO</a>
                 <a href="https://github.com/danilofrazao-dev/Sinergitec.VoiceLink/blob/main/SUPPORT.md" target="_blank" class="btn btn-secondary" data-t="cta_support">SUPPORT THE PROJECT</a>
             </div>
@@ -393,6 +394,28 @@
                 <h3 data-t="feat3_title">Radical Visualization</h3>
                 <p data-t="feat3_desc">High-precision audio feedback with our custom mini-spike waveform. See the pulse of your connection in real-time.</p>
             </div>
+        </section>
+
+        <section id="setup" style="margin-top: 10rem;">
+            <h2 style="font-weight: 600; text-transform: uppercase; margin-bottom: 2rem;" data-t="setup_title">Getting Started</h2>
+            <p style="max-width: 640px; margin: 0 auto 3rem; color: var(--text-dim);" data-t="setup_intro">VoiceLink needs TWO separate sign-ins. It is the same Google account both times — Google is the door, not the account.</p>
+
+            <div class="features" style="margin-top: 0;">
+                <div class="feature-card">
+                    <h3 data-t="setup_s1_title">1 &middot; Sign in to Sinergitec</h3>
+                    <p data-t="setup_s1_desc">Identifies you to VoiceLink. This is your product account — it carries your licence, trial and PRO status.</p>
+                </div>
+                <div class="feature-card">
+                    <h3 data-t="setup_s2_title">2 &middot; Sign in to Groq</h3>
+                    <p data-t="setup_s2_desc">Powers the speech-to-text. A separate provider — use the same Google account. Never used Groq? Signing in creates your account automatically.</p>
+                </div>
+                <div class="feature-card">
+                    <h3 data-t="setup_s3_title">3 &middot; Paste your API key</h3>
+                    <p data-t="setup_s3_desc">Create a free key in the Groq console, paste it into the Get API tab, and start talking. Your key stays on your machine.</p>
+                </div>
+            </div>
+
+            <p style="color: var(--text-dim); max-width: 640px; margin: 2.5rem auto 0; font-size: 0.95rem;" data-t="setup_note"><strong>Both are required.</strong> Signing in to one does not sign you in to the other — they are unrelated services. Without both, the START button will not run.</p>
         </section>
 
         <section id="support" style="margin-top: 10rem;">
@@ -442,6 +465,16 @@
         const translations = {
             en: {
                 nav_features: "Features",
+                nav_setup: "Setup",
+                setup_title: "Getting Started",
+                setup_intro: "VoiceLink needs TWO separate sign-ins. It is the same Google account both times — Google is the door, not the account.",
+                setup_s1_title: "1 · Sign in to Sinergitec",
+                setup_s1_desc: "Identifies you to VoiceLink. This is your product account — it carries your licence, trial and PRO status.",
+                setup_s2_title: "2 · Sign in to Groq",
+                setup_s2_desc: "Powers the speech-to-text. A separate provider — use the same Google account. Never used Groq? Signing in creates your account automatically.",
+                setup_s3_title: "3 · Paste your API key",
+                setup_s3_desc: "Create a free key in the Groq console, paste it into the Get API tab, and start talking. Your key stays on your machine.",
+                setup_note: "Both are required. Signing in to one does not sign you in to the other — they are unrelated services. Without both, the START button will not run.",
                 lab_title: "Lab & Experiments",
                 lab_desc: "Interactive browser experiments built by Sinergitec.",
                 lab_1: "2D Game",
@@ -476,6 +509,16 @@
             },
             pt: {
                 nav_features: "Recursos",
+                nav_setup: "Instalação",
+                setup_title: "Como Começar",
+                setup_intro: "O VoiceLink exige DOIS logins separados. É a mesma conta Google nas duas vezes — o Google é a porta, não a conta.",
+                setup_s1_title: "1 · Entre na Sinergitec",
+                setup_s1_desc: "Identifica você para o VoiceLink. Esta é a sua conta do produto — ela carrega sua licença, teste e status PRO.",
+                setup_s2_title: "2 · Entre no Groq",
+                setup_s2_desc: "Alimenta a transcrição de voz. Um provedor separado — use a mesma conta Google. Nunca usou o Groq? O login cria sua conta automaticamente.",
+                setup_s3_title: "3 · Cole sua chave de API",
+                setup_s3_desc: "Crie uma chave gratuita no console do Groq, cole na aba Obter API e comece a falar. Sua chave fica na sua máquina.",
+                setup_note: "Os dois são obrigatórios. Entrar em um não faz login no outro — são serviços sem relação. Sem os dois, o botão INICIAR não roda.",
                 lab_title: "Laboratório & Experimentos",
                 lab_desc: "Experimentos interativos de navegador criados pela Sinergitec.",
                 lab_1: "Jogo 2D",
@@ -510,6 +553,16 @@
             },
             es: {
                 nav_features: "Características",
+                nav_setup: "Instalación",
+                setup_title: "Cómo Empezar",
+                setup_intro: "VoiceLink requiere DOS inicios de sesión separados. Es la misma cuenta de Google las dos veces — Google es la puerta, no la cuenta.",
+                setup_s1_title: "1 · Inicie sesión en Sinergitec",
+                setup_s1_desc: "Lo identifica ante VoiceLink. Esta es su cuenta del producto — lleva su licencia, prueba y estado PRO.",
+                setup_s2_title: "2 · Inicie sesión en Groq",
+                setup_s2_desc: "Alimenta la transcripción de voz. Un proveedor aparte — use la misma cuenta de Google. ¿Nunca usó Groq? El inicio crea su cuenta automáticamente.",
+                setup_s3_title: "3 · Pegue su clave de API",
+                setup_s3_desc: "Cree una clave gratuita en la consola de Groq, péguela en la pestaña Obtener API y empiece a hablar. Su clave se queda en su máquina.",
+                setup_note: "Ambos son obligatorios. Iniciar sesión en uno no lo inicia en el otro — son servicios sin relación. Sin los dos, el botón INICIAR no funciona.",
                 lab_title: "Laboratorio y Experimentos",
                 lab_desc: "Experimentos interactivos de navegador creados por Sinergitec.",
                 lab_1: "Juego 2D",
@@ -570,7 +623,7 @@
                         gtag('event', 'download_click', {
                             'app_name': 'VoiceLink',
                             'platform': 'Windows',
-                            'version': 'v3.0.1'
+                            'version': 'v3.0.2'
                         });
                     }
                 });
