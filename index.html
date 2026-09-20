@@ -12,43 +12,15 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sinergitec | VoiceLink v3.0.0</title>
     <link rel="icon" type="image/png" href="Assets/favicon.png">
     <style>
         :root {
-            /* ---- Brand palette, matched to the LIVE WEBSITE -----------------
-               The deployed site ships an olive green (#3E8E6B, hue 155) which
-               reads bluer and fits the dark surfaces better than the logo's
-               purer grass green (#33874C, hue 138). We keep the LIVE green as
-               the base and rebuild the family around that same hue.
-               ---------------------------------------------------------------- */
-
-            /* Surfaces — near-black, with a barely-there green cast so the
-               page reads as one family with the mark. */
             --bg: #050505;
-            --surface: #0b0e0c;
-            --surface-2: #0c110e;
-            --border: rgba(62, 142, 107, 0.12);
-
-            /* Green — the LIVE olive tone, unchanged. Drives every interactive state. */
-            --primary: #3e8e6b;
-            --primary-hover: #4aab80;
-            --primary-bright: #5fb894;
-            --primary-deep: #2a6350;
+            --surface: #0e0e0e;
+            --primary: #3e8e6b; /* Official Sinergy Olive Green */
             --primary-glow: rgba(62, 142, 107, 0.25);
-            --primary-soft: rgba(62, 142, 107, 0.10);
-
-            /* Blue — the secondary logo tone. Structural / informational only,
-               never for body text: raw #195E7C is 2.85:1 on --bg and fails AA.
-               The tinted forms below clear 4.5:1. */
-            --accent: #195e7c;
-            --accent-text: #427b94;
-            --accent-bright: #5e8ea3;
-            --accent-deep: #124257;
-            --accent-soft: rgba(25, 94, 124, 0.12);
-
             --text: #eeeeee;
-            --text-dim: #6f7972;
+            --text-dim: #777777;
             --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -91,7 +63,7 @@
         nav a:hover { color: var(--primary); }
 
         .lang-switcher {
-            display: flex; background: var(--primary-soft);
+            display: flex; background: rgba(255, 255, 255, 0.05);
             padding: 4px; border-radius: 8px; gap: 4px; margin-left: 1rem;
         }
 
@@ -101,9 +73,7 @@
             cursor: pointer; border-radius: 6px; transition: var(--transition);
         }
 
-        /* Language buttons stay NEUTRAL on purpose: green is reserved for the buy/purchase
-           actions only, so the colour always means "this costs money". */
-        .lang-btn.active { background: rgba(255, 255, 255, 0.10); color: #ffffff; }
+        .lang-btn.active { background: var(--primary); color: white; }
 
         main { max-width: 1100px; margin: 0 auto; padding: 0 2rem; text-align: center; }
         main > .hero { padding-top: 0; margin-top: 0; }
@@ -132,31 +102,22 @@
             letter-spacing: 1px; text-transform: uppercase;
         }
 
-        /* The only green button on the page. */
-        .btn-buy { background-color: var(--primary); color: #ffffff; border: 1px solid var(--primary-bright); box-shadow: 0 8px 25px rgba(0,0,0,0.5); }
-        .btn-buy:hover { transform: translateY(-3px); background-color: var(--primary-hover); color: #ffffff; box-shadow: 0 12px 32px var(--primary-glow); }
+        .btn-primary { background-color: var(--primary); color: rgba(255,255,255,0.9); box-shadow: 0 8px 25px rgba(0,0,0,0.5); }
+        .btn-primary:hover { transform: translateY(-3px); background-color: #4aab80; color: #ffffff; }
 
-        /* Secondary action carries the BLUE, so the two logo colours each own
-           a distinct role instead of blue sitting unused in the palette.
-           Used by BOTH free actions — DOWNLOAD and SUPPORT THE PROJECT — so they
-           read as a pair and only BUY carries green. */
-        .btn-secondary { background-color: transparent; color: var(--text-dim); border: 1px solid var(--accent-soft); }
-        .btn-secondary:hover { color: var(--text); background-color: var(--accent-soft); border-color: var(--accent-text); }
-
-        /* Non-purchase actions: neutral outline, never green. */
-        .btn-neutral { background-color: transparent; color: var(--text-dim); border: 1px solid rgba(255,255,255,0.12); }
-        .btn-neutral:hover { color: var(--text); background-color: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.22); }
+        .btn-secondary { background-color: transparent; color: var(--text-dim); border: 1px solid rgba(255,255,255,0.06); }
+        .btn-secondary:hover { color: var(--text); background-color: rgba(255,255,255,0.02); border-color: var(--primary); }
 
         .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-top: 10rem; }
 
         .feature-card {
             background: var(--surface); padding: 5rem 3.5rem; border-radius: 40px; text-align: left;
-            border: 1px solid var(--border); transition: var(--transition);
+            border: 1px solid rgba(255,255,255,0.02); transition: var(--transition);
         }
 
-        .feature-card:hover { border-color: var(--primary); transform: translateY(-8px); background: var(--surface-2); }
+        .feature-card:hover { border-color: var(--primary); transform: translateY(-8px); background: #181818; }
 
-        .feature-card h3 { font-size: 1.8rem; margin-bottom: 1.5rem; color: var(--primary-bright); font-weight: 600; letter-spacing: -0.2px; }
+        .feature-card h3 { font-size: 1.8rem; margin-bottom: 1.5rem; color: var(--primary); font-weight: 600; letter-spacing: -0.2px; }
         .feature-card p { color: var(--text-dim); font-size: 1.1rem; line-height: 1.6; }
 
 
@@ -174,17 +135,17 @@
             width: 140px;
             height: auto;
             border-radius: 16px;
-            border: 1px solid var(--border);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
             transition: var(--transition);
-            background: var(--primary-soft);
+            background: rgba(255, 255, 255, 0.02);
             padding: 4px;
         }
 
         .app-screenshot-compact:hover {
             transform: scale(1.06);
             border-color: var(--primary);
-            box-shadow: 0 20px 45px var(--primary-glow);
+            box-shadow: 0 20px 45px rgba(62, 142, 107, 0.25);
         }
 
         .app-intro-video {
@@ -195,7 +156,7 @@
             aspect-ratio: 16 / 9;
             object-fit: cover;
             /* No border / radius / shadow: the clip background matches --bg
-               (#050505), so any frame would draw a visible box around it. */
+               (#0d0d0d), so any frame would draw a visible box around it. */
             border: none;
             border-radius: 0;
             box-shadow: none;
@@ -214,7 +175,7 @@
 
         .video-container {
             background: #000000;
-            border: 1px solid var(--accent-soft);
+            border: 1px solid rgba(255, 255, 255, 0.04);
             border-radius: 28px;
             overflow: hidden;
             width: 100%;
@@ -230,7 +191,7 @@
             object-fit: cover;
         }
 
-        footer { padding: 6rem 2rem; text-align: center; border-top: 1px solid var(--border); margin-top: 10rem; }
+        footer { padding: 6rem 2rem; text-align: center; border-top: 1px solid rgba(255,255,255,0.02); margin-top: 10rem; }
 
         .social-links { display: flex; justify-content: center; gap: 4rem; margin-bottom: 3rem; }
         .social-links a { color: var(--text-dim); text-decoration: none; font-weight: 700; font-size: 0.8rem; letter-spacing: 2px; transition: var(--transition); text-transform: uppercase; }
@@ -239,6 +200,9 @@
 
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
+            /* Mobile: scale the brand intro video 6% so it zooms together
+               with the rest of the page instead of staying static. */
+            .app-intro-video { transform: scale(1.06); }
             header { flex-direction: column; gap: 2rem; padding: 3rem 2rem; }
             .logo-img { height: 60px; }
             nav a { margin: 0.5rem 0; font-size: 0.7rem; }
@@ -246,6 +210,124 @@
             .lang-switcher { margin-left: 0; }
         }
     </style>
+<!-- ============================================================
+     VoiceLink — DROP-IN <head> SEO BLOCK (homepage)
+     Insert into the <head> of https://sinergitec.com.br/index.html
+     Replaces: nothing (all of this is currently absent)
+     Safe to add as-is. Nothing else on the page needs to change.
+     ============================================================ -->
+
+<!-- Primary -->
+<title>VoiceLink — Voice-to-Text for Windows | Sinergitec</title>
+<meta name="description" content="VoiceLink types your speech into any Windows window — VS Code, Slack, Terminal. Local-first privacy, no cloud storage, no voice training. PRO license R$ 49,99.">
+<meta name="keywords" content="voice to text Windows, speech to text, dictation software, voice typing, offline speech recognition, VoiceLink, Sinergitec">
+<meta name="author" content="Sinergitec Systems">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<link rel="canonical" href="https://sinergitec.com.br/">
+
+<!-- Language alternates (site ships EN / PT / ES) -->
+<link rel="alternate" hreflang="en" href="https://sinergitec.com.br/">
+<link rel="alternate" hreflang="pt-BR" href="https://sinergitec.com.br/">
+<link rel="alternate" hreflang="es" href="https://sinergitec.com.br/">
+<link rel="alternate" hreflang="x-default" href="https://sinergitec.com.br/">
+
+<!-- Open Graph (rich preview when shared on social/chat) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Sinergitec">
+<meta property="og:title" content="VoiceLink — Voice-to-Text for Windows with Universal Injection">
+<meta property="og:description" content="Type into any window using only your voice. Local-first privacy — no cloud storage, no voice training. PRO license R$ 49,99.">
+<meta property="og:url" content="https://sinergitec.com.br/">
+<meta property="og:image" content="https://sinergitec.com.br/Assets/voicelink_app.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="VoiceLink — voice-to-text for Windows">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="pt_BR">
+<meta property="og:locale:alternate" content="es_ES">
+
+<!-- Twitter / X card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="VoiceLink — Voice-to-Text for Windows">
+<meta name="twitter:description" content="Type into any window using only your voice. Local-first privacy. PRO license R$ 49,99.">
+<meta name="twitter:image" content="https://sinergitec.com.br/Assets/voicelink_app.png">
+<meta name="twitter:site" content="@sinergitecbr">
+
+<!-- Google tag (already present on the page — keep existing) -->
+<!-- ...existing gtag script stays here... -->
+
+<!-- Structured data: Organization + WebSite + SoftwareApplication + Offer(R$49,99) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://sinergitec.com.br/#organization",
+      "name": "Sinergitec Systems",
+      "alternateName": "Sinergitec",
+      "url": "https://sinergitec.com.br/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://sinergitec.com.br/Assets/logo.png"
+      },
+      "founder": {
+        "@type": "Person",
+        "name": "danilofrazao-dev",
+        "url": "https://github.com/danilofrazao-dev"
+      },
+      "sameAs": [
+        "https://github.com/danilofrazao-dev/Sinergitec.VoiceLink",
+        "https://instagram.com/sinergitecbr",
+        "https://x.com/sinergitecbr",
+        "https://tiktok.com/@sinergitec"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://sinergitec.com.br/#website",
+      "url": "https://sinergitec.com.br/",
+      "name": "Sinergitec",
+      "publisher": { "@id": "https://sinergitec.com.br/#organization" },
+      "inLanguage": ["en", "pt-BR", "es"]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://sinergitec.com.br/#voicelink",
+      "name": "VoiceLink",
+      "alternateName": "Sinergitec VoiceLink",
+      "applicationCategory": "UtilitiesApplication",
+      "applicationSubCategory": "Voice-to-text / Speech recognition",
+      "operatingSystem": "Windows 10, Windows 11",
+      "softwareVersion": "3.0.1",
+      "description": "VoiceLink is a local-first Windows voice-to-text application that injects your speech directly into any window — VS Code, Slack, Terminal — using Universal Injection. Your data stays on your machine: no cloud storage, no training on your voice. Features high-precision audio feedback with a custom mini-spike waveform.",
+      "url": "https://sinergitec.com.br/",
+      "downloadUrl": "https://github.com/danilofrazao-dev/Sinergitec.VoiceLink/releases/download/v3.0.1/SinergitecVoiceLink.exe",
+      "softwareHelp": "https://github.com/danilofrazao-dev/Sinergitec.VoiceLink",
+      "publisher": { "@id": "https://sinergitec.com.br/#organization" },
+      "author": { "@id": "https://sinergitec.com.br/#organization" },
+      "license": "https://github.com/danilofrazao-dev/Sinergitec.VoiceLink/blob/main/LICENSE",
+      "featureList": [
+        "Universal Injection — dictate into any window using only your voice",
+        "Local-first privacy — no cloud storage, no voice training",
+        "Radical Visualization — real-time mini-spike audio waveform feedback",
+        "Works offline on the user's own machine"
+      ],
+      "offers": {
+        "@type": "Offer",
+        "@id": "https://sinergitec.com.br/#offer-pro",
+        "name": "VoiceLink PRO License",
+        "price": "49.99",
+        "priceCurrency": "BRL",
+        "availability": "https://schema.org/InStock",
+        "url": "https://buy.stripe.com/7sYdR25vo8Zxc2l0hifQI04",
+        "priceValidUntil": "2027-12-31",
+        "seller": { "@id": "https://sinergitec.com.br/#organization" },
+        "category": "one-time purchase"
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
     <div class="glow"></div>
@@ -253,7 +335,7 @@
     <header>
         <nav>
             <a href="#features" data-t="nav_features">Features</a>
-            <a href="https://buy.stripe.com/7sYdR25vo8Zxc2l0hifQI04" target="_blank" rel="noopener" style="color: var(--primary); font-weight: 700;">BUY PRO</a>
+            <a href="https://buy.stripe.com/7sYdR25vo8Zxc2l0hifQI04" target="_blank" target="_blank" style="color: var(--primary); font-weight: 700;">BUY PRO</a>
             <a href="https://github.com/danilofrazao-dev/Sinergitec.VoiceLink" data-t="nav_github">GitHub</a>
             <a href="https://github.com/danilofrazao-dev/Sinergitec.VoiceLink/blob/main/SUPPORT.md" target="_blank" data-t="nav_support">Support</a>
             <div class="lang-switcher">
@@ -267,9 +349,12 @@
     <main>
         <section class="hero">
             
-            <!-- 1. Sinergitec brand intro video (Remotion) -->
+            <h1><span class="brand" data-t="hero_title_brand">VoiceLink</span> <span class="version">v3.0.1</span></h1>
+            <p data-t="hero_subtitle">Voice-to-text for Windows. Type into any window using only your voice.</p>
+
+            <!-- 1.  Sinergitec brand intro video (Remotion) -->
             <div class="app-screenshot-container">
-                <video class="app-intro-video" autoplay muted playsinline aria-label="Sinergitec brand intro">
+                <video class="app-intro-video" autoplay muted playsinline aria-label=" Sinergitec brand intro">
                     <source src="Assets/sinergitec_intro.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
@@ -277,8 +362,8 @@
 
             <!-- 2. Download / CTA Section -->
             <div class="cta-group">
-                <a href="https://github.com/danilofrazao-dev/Sinergitec.VoiceLink/releases/download/v3.0.0/SinergitecVoiceLink.exe" class="btn btn-secondary" data-t="cta_download">DOWNLOAD FOR WINDOWS</a>
-                <a href="https://buy.stripe.com/7sYdR25vo8Zxc2l0hifQI04" target="_blank" rel="noopener" class="btn btn-buy">BUY LICENSE / PRO</a>
+                <a href="https://github.com/danilofrazao-dev/Sinergitec.VoiceLink/releases/download/v3.0.1/SinergitecVoiceLink.exe" class="btn btn-primary" data-t="cta_download">DOWNLOAD FOR WINDOWS</a>
+                <a href="https://buy.stripe.com/7sYdR25vo8Zxc2l0hifQI04" target="_blank" target="_blank" class="btn btn-secondary" style="border-color: var(--primary); color: #ffffff;">BUY LICENSE / PRO</a>
                 <a href="https://github.com/danilofrazao-dev/Sinergitec.VoiceLink/blob/main/SUPPORT.md" target="_blank" class="btn btn-secondary" data-t="cta_support">SUPPORT THE PROJECT</a>
             </div>
 
@@ -294,7 +379,8 @@
         </section>
 
 
-        <section id="features" class="features">
+        <section id="features" class="features" aria-label="Features">
+            <h2 style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden">Features</h2>
             <div class="feature-card">
                 <h3 data-t="feat1_title">Universal Injection</h3>
                 <p data-t="feat1_desc">Type into any window—VS Code, Slack, Terminal—using only your voice. Faster than a keyboard, smarter than a transcript.</p>
@@ -311,8 +397,35 @@
 
         <section id="support" style="margin-top: 10rem;">
             <h2 style="font-weight: 600; text-transform: uppercase; margin-bottom: 2rem;" data-t="support_title">Support Sinergitec</h2>
-            <p style="color: var(--text-dim); max-width: 600px; margin: 0 auto 3rem;" data-t="support_desc">Your support helps us keep Sinergitec independent and local-first. Every contribution goes directly towards trademarking and future developments.</p>
-            <a href="https://github.com/danilofrazao-dev/Sinergitec.VoiceLink/blob/main/SUPPORT.md" target="_blank" class="btn btn-neutral" data-t="cta_contribute">CONTRIBUTE NOW</a>
+            <p style="color: var(--text-dim); max-width: 600px; margin: 0 auto 3rem;" data-t="support_desc">Your support helps us keep  Sinergitec independent and local-first. Every contribution goes directly towards trademarking and future developments.</p>
+            <a href="https://github.com/danilofrazao-dev/Sinergitec.VoiceLink/blob/main/SUPPORT.md" target="_blank" class="btn btn-primary" data-t="cta_contribute">CONTRIBUTE NOW</a>
+        </section>
+
+        <section id="lab" style="margin-top: 10rem;">
+            <h2 style="font-weight: 600; text-transform: uppercase; margin-bottom: 2rem;" data-t="lab_title">Lab &amp; Experiments</h2>
+            <p style="color: var(--text-dim); max-width: 600px; margin: 0 auto 3rem;" data-t="lab_desc">Interactive browser experiments built by Sinergitec.</p>
+            <div class="features">
+                <a href="/2dgame/" class="feature-card" style="text-decoration:none;">
+                    <h3 data-t="lab_1">2D Game</h3>
+                    <p data-t="lab_1_desc">Canvas-based neon wave defense.</p>
+                </a>
+                <a href="/2dgame-mobile/" class="feature-card" style="text-decoration:none;">
+                    <h3 data-t="lab_2">2D Game (Mobile)</h3>
+                    <p data-t="lab_2_desc">Touch-optimised variant of the game.</p>
+                </a>
+                <a href="/kaleidoscope/" class="feature-card" style="text-decoration:none;">
+                    <h3 data-t="lab_3">Kaleidoscope</h3>
+                    <p data-t="lab_3_desc">Apple II Hi-Res generative visual simulator.</p>
+                </a>
+                <a href="/flip-clock/" class="feature-card" style="text-decoration:none;">
+                    <h3 data-t="lab_4">Flip Clock</h3>
+                    <p data-t="lab_4_desc">Classic black and white flip clock UI.</p>
+                </a>
+                <a href="/red-led-banner/" class="feature-card" style="text-decoration:none;">
+                    <h3 data-t="lab_5">Red LED Banner</h3>
+                    <p data-t="lab_5_desc">Scrolling LED-style message banner.</p>
+                </a>
+            </div>
         </section>
     </main>
 
@@ -322,13 +435,27 @@
             <a href="https://instagram.com/sinergitecbr">INSTAGRAM</a>
             <a href="https://x.com/sinergitecbr">X / TWITTER</a>
         </div>
-        <p class="copyright">Developed by danilofrazao-dev | &copy; 2026 Sinergitec Systems</p>
+        <p class="copyright">Developed by danilofrazao-dev | &copy; 2026  Sinergitec Systems</p>
     </footer>
 
     <script>
         const translations = {
             en: {
                 nav_features: "Features",
+                lab_title: "Lab & Experiments",
+                lab_desc: "Interactive browser experiments built by Sinergitec.",
+                lab_1: "2D Game",
+                lab_1_desc: "Canvas-based neon wave defense.",
+                lab_2: "2D Game (Mobile)",
+                lab_2_desc: "Touch-optimised variant of the game.",
+                lab_3: "Kaleidoscope",
+                lab_3_desc: "Apple II Hi-Res generative visual simulator.",
+                lab_4: "Flip Clock",
+                lab_4_desc: "Classic black and white flip clock UI.",
+                lab_5: "Red LED Banner",
+                lab_5_desc: "Scrolling LED-style message banner.",
+                hero_title_brand: "VoiceLink",
+                hero_subtitle: "Voice-to-text for Windows. Type into any window using only your voice.",
                 nav_github: "GitHub",
                 nav_support: "Support",
                 cta_download: "DOWNLOAD FOR WINDOWS",
@@ -340,7 +467,7 @@
                 feat3_title: "Radical Visualization",
                 feat3_desc: "High-precision audio feedback with our custom mini-spike waveform. See the pulse of your connection in real-time.",
                 support_title: "Support Sinergitec",
-                support_desc: "Your support helps us keep Sinergitec independent and local-first. Every contribution goes directly towards trademarking and future developments.",
+                support_desc: "Your support helps us keep  Sinergitec independent and local-first. Every contribution goes directly towards trademarking and future developments.",
                 cta_contribute: "CONTRIBUTE NOW",
                 showcase_title: "Universal Interface & Web Integration",
                 showcase_app_label: "Native Windows Universal Audio Hub",
@@ -349,6 +476,20 @@
             },
             pt: {
                 nav_features: "Recursos",
+                lab_title: "Laboratório & Experimentos",
+                lab_desc: "Experimentos interativos de navegador criados pela Sinergitec.",
+                lab_1: "Jogo 2D",
+                lab_1_desc: "Defesa de ondas neon em canvas.",
+                lab_2: "Jogo 2D (Mobile)",
+                lab_2_desc: "Variante otimizada para toque do jogo.",
+                lab_3: "Caleidoscópio",
+                lab_3_desc: "Simulador visual generativo Apple II Hi-Res.",
+                lab_4: "Relógio Flip",
+                lab_4_desc: "Interface clássica de relógio flip preto e branco.",
+                lab_5: "Banner LED Vermelho",
+                lab_5_desc: "Banner de mensagem em estilo LED rolante.",
+                hero_title_brand: "VoiceLink",
+                hero_subtitle: "Voz para texto no Windows. Digite em qualquer janela usando apenas sua voz.",
                 nav_github: "GitHub",
                 nav_support: "Suporte",
                 cta_download: "BAIXAR PARA WINDOWS",
@@ -360,7 +501,7 @@
                 feat3_title: "Visualização Radical",
                 feat3_desc: "Feedback de áudio de alta precisão com nossa forma de onda mini-spike personalizada. Veja o pulso da sua conexão em tempo real.",
                 support_title: "Apoie a Sinergitec",
-                support_desc: "Seu apoio nos ajuda a manter a Sinergitec independente e focada no local-first. Cada contribuição vai diretamente para o registro da marca e desenvolvimentos futuros.",
+                support_desc: "Seu apoio nos ajuda a manter a  Sinergitec independente e focada no local-first. Cada contribuição vai diretamente para o registro da marca e desenvolvimentos futuros.",
                 cta_contribute: "CONTRIBUIR AGORA",
                 showcase_title: "Interface Universal & Integração Web",
                 showcase_app_label: "Hub de Áudio Nativo Universal para Windows",
@@ -369,6 +510,20 @@
             },
             es: {
                 nav_features: "Características",
+                lab_title: "Laboratorio y Experimentos",
+                lab_desc: "Experimentos interactivos de navegador creados por Sinergitec.",
+                lab_1: "Juego 2D",
+                lab_1_desc: "Defensa de ondas neón en canvas.",
+                lab_2: "Juego 2D (Móvil)",
+                lab_2_desc: "Variante optimizada para táctil del juego.",
+                lab_3: "Caleidoscopio",
+                lab_3_desc: "Simulador visual generativo Apple II Hi-Res.",
+                lab_4: "Reloj Flip",
+                lab_4_desc: "Interfaz clásica de reloj flip blanco y negro.",
+                lab_5: "Banner LED Rojo",
+                lab_5_desc: "Banner de mensaje estilo LED desplazable.",
+                hero_title_brand: "VoiceLink",
+                hero_subtitle: "Voz a texto en Windows. Escribe en cualquier ventana usando solo tu voz.",
                 nav_github: "GitHub",
                 nav_support: "Soporte",
                 cta_download: "DESCARGAR PARA WINDOWS",
@@ -380,7 +535,7 @@
                 feat3_title: "Visualización Radical",
                 feat3_desc: "Retroalimentación de audio de alta precisión con nuestra forma de onda mini-spike personalizada. Mira el pulso de tu conexión en tiempo real.",
                 support_title: "Apoya a Sinergitec",
-                support_desc: "Tu apoyo nos ayuda a mantener Sinergitec independiente y centrada en lo local. Cada contribución va directamente al registro de la marca y desarrollos futuros.",
+                support_desc: "Tu apoyo nos ayuda a mantener  Sinergitec independiente y centrada en lo local. Cada contribución va directamente al registro de la marca y desarrollos futuros.",
                 cta_contribute: "CONTRIBUIR AHORA",
                 showcase_title: "Interfaz Universal e Integración Web",
                 showcase_app_label: "Hub de Audio Nativo Universal para Windows",
@@ -415,7 +570,7 @@
                         gtag('event', 'download_click', {
                             'app_name': 'VoiceLink',
                             'platform': 'Windows',
-                            'version': 'v3.0.0'
+                            'version': 'v3.0.1'
                         });
                     }
                 });
