@@ -1,0 +1,36 @@
+# Sinergitec
+
+> Sinergitec Systems builds local-first developer tools. Our flagship product is **VoiceLink**, a Windows voice-to-text application that injects speech directly into any window (VS Code, Slack, Terminal) — privacy-first, with no cloud storage and no training on your voice.
+
+Sinergitec is an independent Brazilian software studio (Sinergitec Systems), developed by danilofrazao-dev. All products are local-first: user data stays on the user's machine. The website is served in English, Portuguese and Spanish.
+
+## Products
+
+- [VoiceLink](https://sinergitec.com.br/): Windows voice-to-text with Universal Injection. Type into any window using only your voice. Local-first privacy — no cloud storage, no voice training. Includes high-precision audio feedback with a custom mini-spike waveform. PRO license: R$ 49,99 BRL (one-time purchase).
+- [VoiceLink releases](https://github.com/danilofrazao-dev/Sinergitec.VoiceLink/releases/latest): Windows installer downloads and version history.
+
+## Purchase
+
+- [Buy VoiceLink PRO](https://buy.stripe.com/7sYdR25vo8Zxc2l0hifQI04): one-time license, R$ 49,99 BRL, secure Stripe checkout.
+- [Support the project](https://github.com/danilofrazao-dev/Sinergitec.VoiceLink/blob/main/SUPPORT.md): contributions fund trademarking and future development.
+
+## Open-source
+
+- [Sinergitec.VoiceLink on GitHub](https://github.com/danilofrazao-dev/Sinergitec.VoiceLink): public repository, licence information and issue tracker.
+
+## Lab / demos
+
+Interactive browser experiments published by Sinergitec:
+
+- [2D Game](https://sinergitec.com.br/2dgame/): canvas-based 2D game demo.
+- [2D Game (mobile)](https://sinergitec.com.br/2dgame-mobile/): touch-optimised variant.
+- [Kaleidoscope](https://sinergitec.com.br/kaleidoscope/): generative visual experiment.
+- [Flip Clock](https://sinergitec.com.br/flip-clock/): retro flip-clock UI.
+- [Red LED Banner](https://sinergitec.com.br/red-led-banner/): LED-style scrolling banner.
+
+## Contact
+
+- [GitHub](https://github.com/danilofrazao-dev/Sinergitec.VoiceLink)
+- [Instagram](https://instagram.com/sinergitecbr)
+- [X / Twitter](https://x.com/sinergitecbr)
+- [TikTok](https://tiktok.com/@sinergitec)
