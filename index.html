@@ -210,13 +210,6 @@
             .lang-switcher { margin-left: 0; }
         }
     </style>
-<!-- ============================================================
-     VoiceLink — DROP-IN <head> SEO BLOCK (homepage)
-     Insert into the <head> of https://sinergitec.com.br/index.html
-     Replaces: nothing (all of this is currently absent)
-     Safe to add as-is. Nothing else on the page needs to change.
-     ============================================================ -->
-
 <!-- Primary -->
 <title>VoiceLink — Voice-to-Text for Windows | Sinergitec</title>
 <meta name="description" content="VoiceLink types your speech into any Windows window — VS Code, Slack, Terminal. Local-first privacy, no cloud storage, no voice training. PRO license R$ 49,99.">
@@ -225,11 +218,11 @@
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <link rel="canonical" href="https://sinergitec.com.br/">
 
-<!-- Language alternates (site ships EN / PT / ES) -->
-<link rel="alternate" hreflang="en" href="https://sinergitec.com.br/">
-<link rel="alternate" hreflang="pt-BR" href="https://sinergitec.com.br/">
-<link rel="alternate" hreflang="es" href="https://sinergitec.com.br/">
-<link rel="alternate" hreflang="x-default" href="https://sinergitec.com.br/">
+<!-- NOTE: hreflang intentionally omitted.
+     The site is a single English URL with a client-side language switcher; no
+     distinct /pt-BR/ or /es/ URLs exist. Emitting multiple hreflang values that
+     all resolve to the same URL is invalid and causes Google to discard the
+     entire cluster. Re-add only when real per-language URLs are published. -->
 
 <!-- Open Graph (rich preview when shared on social/chat) -->
 <meta property="og:type" content="website">
@@ -324,6 +317,52 @@
         "seller": { "@id": "https://sinergitec.com.br/#organization" },
         "category": "one-time purchase"
       }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://sinergitec.com.br/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why does VoiceLink need two separate sign-ins?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "VoiceLink needs two separate sign-ins because they are unrelated services. The Sinergitec sign-in identifies you to VoiceLink and carries your licence, trial and PRO status. The Groq sign-in powers the speech-to-text. It is the same Google account both times \u2014 Google is the door, not the account. Both are required: signing in to one does not sign you in to the other, and without both the START button will not run."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I set up VoiceLink and start dictating?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Setup takes three steps. 1) Sign in to Sinergitec \u2014 this is your product account and carries your licence, trial and PRO status. 2) Sign in to Groq \u2014 this powers the speech-to-text; if you have never used Groq, signing in creates your account automatically. 3) Create a free API key in the Groq console, paste it into the Get API tab, and start talking. Your key stays on your machine."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does VoiceLink store my voice or my dictation in the cloud?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. VoiceLink is local-first by design: your data stays on your machine, there is no cloud storage, and your voice is not used for training. The API key you paste in also stays on your machine."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which Windows applications can VoiceLink type into?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "VoiceLink uses Universal Injection to type into any window using only your voice \u2014 including VS Code, Slack and Terminal. It is faster than a keyboard and smarter than a transcript."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which operating systems does VoiceLink support, and what does the PRO licence cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "VoiceLink runs on Windows 10 and Windows 11. The PRO licence is a one-time purchase of R$ 49,99 in BRL."
+          }
+        }
+      ]
     }
   ]
 }
